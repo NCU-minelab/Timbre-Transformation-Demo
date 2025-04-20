@@ -1,219 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/assets/css/style.css?v=65bab9c5afb02389de85b6e668f9065f9300a421">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timbre Transformation Demo</title>
+  <link rel="stylesheet" href="/assets/css/style.css?v=65bab9c5afb02389de85b6e668f9065f9300a421">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    table.center {
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    p, h2, h3.center {
+      margin-left: 5%;
+    }
 
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    h1.text-center {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 2.5em;
+      font-weight: bold;
+    }
 
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <style>
-        table.center {
-        margin-left: auto; 
-        margin-right: auto;
-        }
-
-        p, h2, h3.center {
-        margin-left: 5%; 
-        }
-    </style>
+    .title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 30px 5% 10px;
+    }
+    .title-row h3 {
+      font-size: 1.4em;
+      font-weight: normal;
+      margin: 0;
+    }
+  </style>
 </head>
 <body>
 
-<h2 class="center" id="abstract">Abstract</h2>
-
-<p>In this study, we propose a timbre transfer model based on the Diffusion architecture, which aims to convert musical pieces performed by various instruments into erhu performances. Our model utilizes Pitch Encoder and Loudness Encoder to extract the pitch and loudness features of the music, and these features are then used as conditions input into the Diffusion Model-based Decoder to generate high-quality erhu timbre music.</p>
-
-<!--<h3 id="reference">Reference</h3>
-
-<p><strong>Full-band General Audio Synthesis With Score-based Diffusion</strong>. <br />
-S. Pascual, G. Bhattacharya., C. Yeh, J. Pons, &amp; J. Serrà. <br />
-2023 IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP 2023). <br />
-<a href="https://arxiv.org/abs/2210.14661">Arxiv: 2210.14661</a></p>-->
-
+<h1 class="text-center">Timbre Transformation Demo</h1>
 <h2 class="center" id="TC-examples">Timbre Change Examples</h2>
 
-<!--<p class="center">The following examples are generated using the classifier-free guidance weight gamma=2. The model is trained on <a href="https://urbansounddataset.weebly.com/urbansound8k.html">UrbanSound8K</a> dataset.</p>-->
-
 <table class="center">
-    <tr>
-        <th>
-            <h3 id="violin">Violin</h3>        
-        </th>
-    </tr>
-    <tr>
-        <td>
-            <p><strong>input</strong></p>
-            <audio controls="">
-                <source src="wav/violin_ori.wav" />
-            </audio>
-        </td>
-        <td>
-            <p><strong>output</strong></p>
-            <audio controls="">
-                <source src="wav/violin.wav" />
-            </audio>
-        </td>
-    </tr>
+  <tr><td colspan="2"><div class="title-row"><h3>Violin</h3><h3>Violin to AI Erhu conversion</h3></div></td></tr>
+  <tr><td><p><strong>input</strong></p><audio controls><source src="wav/violin_ori.wav" /></audio></td><td><p><strong>output</strong></p><audio controls><source src="wav/violin.wav" /></audio></td></tr>
 
-    <tr>
-        <th>
-            <h3 id="piano">Piano</h3>        
-        </th>
-    </tr>
-    <tr>
-        <td>
-            <p><strong>input</strong></p>
-            <audio controls="">
-                <source src="wav/piano_ori.wav" />
-            </audio>
-        </td>
-        <td>
-            <p><strong>output</strong></p>
-            <audio controls="">
-                <source src="wav/piano.wav" />
-            </audio>
-        </td>
-    </tr>
-    <tr>
-        <th>
-            <h3 id="guzheng">Guzheng</h3>        
-        </th>
-    </tr>
-    <tr>
-        <td>
-            <p><strong>input</strong></p>
-            <audio controls="">
-                <source src="wav/keto_ori.wav" />
-            </audio>
-        </td>
-        <td>
-            <p><strong>output</strong></p>
-            <audio controls="">
-                <source src="wav/keto.wav" />
-            </audio>
-        </td>
-    </tr>
-    <tr>
-        <th>
-            <h3 id="chorus">Chorus</h3>        
-        </th>
-    </tr>
-    <tr>
-        <td>
-            <p><strong>input</strong></p>
-            <audio controls="">
-                <source src="wav/people_ori.wav" />
-            </audio>
-        </td>
-        <td>
-            <p><strong>output</strong></p>
-            <audio controls="">
-                <source src="wav/people.wav" />
-            </audio>
-        </td>
-    </tr>
-    <tr>
-        <th>
-            <h3 id="flute">Flute</h3>        
-        </th>
-    </tr>
-    <tr>
-        <td>
-            <p><strong>input</strong></p>
-            <audio controls="">
-                <source src="wav/flute_ori.wav" />
-            </audio>
-        </td>
-        <td>
-            <p><strong>output</strong></p>
-            <audio controls="">
-                <source src="wav/flute.wav" />
-            </audio>
-        </td>
-    </tr>
+  <tr><td colspan="2"><div class="title-row"><h3>Piano</h3><h3>Piano to AI Erhu conversion</h3></div></td></tr>
+  <tr><td><p><strong>input</strong></p><audio controls><source src="wav/piano_ori.wav" /></audio></td><td><p><strong>output</strong></p><audio controls><source src="wav/piano.wav" /></audio></td></tr>
+
+  <tr><td colspan="2"><div class="title-row"><h3>Guzheng</h3><h3>Guzheng to AI Erhu conversion</h3></div></td></tr>
+  <tr><td><p><strong>input</strong></p><audio controls><source src="wav/keto_ori.wav" /></audio></td><td><p><strong>output</strong></p><audio controls><source src="wav/keto.wav" /></audio></td></tr>
+
+  <tr><td colspan="2"><div class="title-row"><h3>Chorus</h3><h3>Chorus to AI Erhu conversion</h3></div></td></tr>
+  <tr><td><p><strong>input</strong></p><audio controls><source src="wav/people_ori.wav" /></audio></td><td><p><strong>output</strong></p><audio controls><source src="wav/people.wav" /></audio></td></tr>
+
+  <tr><td colspan="2"><div class="title-row"><h3>Flute</h3><h3>Flute to AI Erhu conversion</h3></div></td></tr>
+  <tr><td><p><strong>input</strong></p><audio controls><source src="wav/flute_ori.wav" /></audio></td><td><p><strong>output</strong></p><audio controls><source src="wav/flute.wav" /></audio></td></tr>
 </table>
 
-<h2 class="center" id="more">More Example</h2>
+<h2 class="center" id="more">More Examples</h2>
 
 <table class="center">
-    <tr height="150">
-        <td>
-            <p><strong>input</strong></p>
-            <audio controls="">
-                <source src="wav/moon-night-ray-piano.wav" />
-            </audio>
-        </td>
-        <td>
-            <p><strong>output</strong></p>
-            <audio controls="">
-                <source src="wav/moon-night.wav" />
-            </audio>
-        </td>
-    </tr>
-    <tr height="150">
-        <td>
-            <p><strong>input</strong></p>
-            <audio controls="">
-                <source src="wav/chahua_ori.wav" />
-            </audio>
-        </td>
-        <td>
-            <p><strong>output</strong></p>
-            <audio controls="">
-                <source src="wav/chahua.wav" />
-            </audio>
-        </td>
-    </tr>
-    <tr height="150">
-        <td>
-            <p><strong>input</strong></p>
-            <audio controls="">
-                <source src="wav/taihu_ori.wav" />
-            </audio>
-        </td>
-        <td>
-            <p><strong>output</strong></p>
-            <audio controls="">
-                <source src="wav/taihu.wav" />
-            </audio>
-        </td>
-    </tr>
-    <tr height="150">
-        <td>
-            <p><strong>input</strong></p>
-            <audio controls="">
-                <source src="wav/weibei_ori.wav" />
-            </audio>
-        </td>
-        <td>
-            <p><strong>output</strong></p>
-            <audio controls="">
-                <source src="wav/weibei.wav" />
-            </audio>
-        </td>
-    </tr>
-    <tr height="150">
-        <td>
-            <p><strong>input</strong></p>
-            <audio controls="">
-                <source src="wav/yanliu_ori.wav" />
-            </audio>
-        </td>
-        <td>
-            <p><strong>output</strong></p>
-            <audio controls="">
-                <source src="wav/yanliu.wav" />
-            </audio>
-        </td>
-    </tr>
+  <tr><td colspan="2"><div class="title-row"><h3>Piano</h3><h3>Piano to AI Erhu conversion</h3></div></td></tr>
+  <tr><td><p><strong>input</strong></p><audio controls><source src="wav/moon-night-ray-piano.wav" /></audio></td><td><p><strong>output</strong></p><audio controls><source src="wav/moon-night.wav" /></audio></td></tr>
+
+  <tr><td colspan="2"><div class="title-row"><h3>Violin</h3><h3>Violin to AI Erhu conversion</h3></div></td></tr>
+  <tr><td><p><strong>input</strong></p><audio controls><source src="wav/chahua_ori.wav" /></audio></td><td><p><strong>output</strong></p><audio controls><source src="wav/chahua.wav" /></audio></td></tr>
+
+  <tr><td colspan="2"><div class="title-row"><h3>Piano</h3><h3>Piano to AI Erhu conversion</h3></div></td></tr>
+  <tr><td><p><strong>input</strong></p><audio controls><source src="wav/taihu_ori.wav" /></audio></td><td><p><strong>output</strong></p><audio controls><source src="wav/taihu.wav" /></audio></td></tr>
+
+  <tr><td colspan="2"><div class="title-row"><h3>Violin</h3><h3>Violin to AI Erhu conversion</h3></div></td></tr>
+  <tr><td><p><strong>input</strong></p><audio controls><source src="wav/weibei_ori.wav" /></audio></td><td><p><strong>output</strong></p><audio controls><source src="wav/weibei.wav" /></audio></td></tr>
+
+  <tr><td colspan="2"><div class="title-row"><h3>Violin</h3><h3>Violin to AI Erhu conversion</h3></div></td></tr>
+  <tr><td><p><strong>input</strong></p><audio controls><source src="wav/yanliu_ori.wav" /></audio></td><td><p><strong>output</strong></p><audio controls><source src="wav/yanliu.wav" /></audio></td></tr>
 </table>
+
 </body>
 </html>
